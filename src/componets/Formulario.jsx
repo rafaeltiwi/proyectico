@@ -13,9 +13,18 @@ const Formulario = () => {
                 justify="center"
                 alignItems="flex-start"
             >
-                <TextField label="Nombre" variant="outlined" color="primary">
-                </TextField>
-                <Button >Enviar</Button>
+                <Grid>
+                    <TextField label="Nombre" variant="outlined" color="primary">
+                    </TextField>
+                </Grid>
+                <Grid>
+                    <TextField label="Email" variant="outlined" color="primary">
+                    </TextField>
+
+                </Grid>
+                <Button variant="outlined" color="primary">
+                     Enviar
+                </Button>
             </Grid>
         </form>
 
