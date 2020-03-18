@@ -25,7 +25,7 @@ const Tabla = (props) => {
                     <TableCell>{user.name}</TableCell>
                     <TableCell align="center">{user.email}</TableCell>
                     <TableCell align="center">
-                    <button className="btn btn-warning">Editar</button>
+                    <button className="btn btn-warning mx-1">Editar</button>
                     <button className="btn btn-danger mt-1" onClick={() => props.deleteUser(user.id)}>Eliminar</button>
 
                     </TableCell>
