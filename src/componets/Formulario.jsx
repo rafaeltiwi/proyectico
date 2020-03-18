@@ -1,34 +1,67 @@
-import React from 'react';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
+import React, {Fragment} from 'react';
+import { useForm } from 'react-hook-form'
 
-const Formulario = () => {
-    return (
+
+
+const Formulario = (props) => {
+
+    const {register, errors, handleSubmit} = useForm();
+
+    const capDatos = (data, e) =>
+    {
+        //console.log(data)
+        props.addUser(data)
         
-        <form>
-            <Grid 
-                container spacing={6}
-                direction="column"
-                justify="center"
-                alignItems="flex-start"
-            >
-                <Grid>
-                    <TextField label="Nombre" variant="outlined" color="primary">
-                    </TextField>
-                </Grid>
-                <Grid>
-                    <TextField label="Email" variant="outlined" color="primary">
-                    </TextField>
+        e.target.reset()
+        
+        
+        
+    }
 
-                </Grid>
-                <Button variant="outlined" color="primary">
-                     Enviar
-                </Button>
-            </Grid>
-        </form>
+    
+    return (
+        <Fragment>
+            <form onSubmit={handleSubmit(capDatos)} className="container">  
+                <input 
+                    type="text" 
+                    className="form-control my-3" 
+                    label="nombre"
+                    name="name"
+                    placeholder="Nombre"
+                    ref={register({
+                        required: {value:true , message:"Es nesesario el nombre"}
+                    })}
+                
+                ></input>
+                    {errors.name &&
+                        <div className="alert alert-danger" role="alert">
+                            {errors.name.message}
+                        </div>
+                    
+                    }
+
+                <input 
+                    type="text" 
+                    className="form-control mb-3" 
+                    label="nombre"
+                    name="email"
+                    placeholder="Email"
+                    ref={register({
+                        required: {value:true , message:"Es nesesario el correo"}
+                    })}
+                ></input>
+                    {errors.email &&
+                        <div className="alert alert-danger" role="alert">
+                            {errors.email.message}
+                        </div>
+                    
+                    }
 
 
+                <button className="btn btn-primary">Enviar</button>
+            </form>
+        </Fragment>
+        
       );
 }
  
